@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by liming on 2015/6/26.
@@ -17,6 +18,11 @@ import java.io.FileOutputStream;
 public class FileOperator {
     private Context context;
     private Process process;
+
+    final String DATA_SYSTEM="/data/system";
+    final String STAGING_FILE=DATA_SYSTEM+"/server_staging";
+    final String PREVIEW_FILE=DATA_SYSTEM+"/xiaomi_account_preview";
+
 
     public FileOperator(Context context) {
         this.context = context;
@@ -99,4 +105,36 @@ public class FileOperator {
         }
         return false;
     }
+
+    public void deleteFile(String filePath){
+        String cmd = "rm -f "+filePath+"\n";
+
+        File file = new File(filePath);
+        if (!file.exists()){
+            return;
+        }
+        try {
+            process = Runtime.getRuntime().exec("su");
+            process.getOutputStream().write(cmd.getBytes());
+            process.getOutputStream().write("exit\n".getBytes());
+            process.waitFor();
+        } catch (Exception e) {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
+    public void createFile(String filePath){
+        String cmd = "touch "+filePath+"\n";
+        try {
+            process = Runtime.getRuntime().exec("su");
+            process.getOutputStream().write(cmd.getBytes());
+            process.getOutputStream().write("exit\n".getBytes());
+            process.waitFor();
+        } catch (Exception e) {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
 }

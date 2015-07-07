@@ -1,5 +1,8 @@
 package com.mi.jr.qa;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.method.ScrollingMovementMethod;
@@ -18,6 +21,10 @@ public class MainActivity extends ActionBarActivity {
             "10.102.33.9   fundres.mipay.com" + "\n";
     private final String env_production = "127.0.0.1    localhost" + "\n";
     private FileOperator fileOperator;
+
+    final String DATA_SYSTEM="/data/system";
+    final String STAGING_FILE=DATA_SYSTEM+"/server_staging";
+    final String PREVIEW_FILE=DATA_SYSTEM+"/xiaomi_account_preview";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,8 @@ public class MainActivity extends ActionBarActivity {
         switchToPreviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fileOperator.deleteFile(STAGING_FILE);
+                fileOperator.deleteFile(PREVIEW_FILE);
                 fileOperator.switchHost("previewHosts");
                 hostContentView.setText(fileOperator.getCurrentHostContent());
                 Toast.makeText(getApplicationContext(), R.string.toast_switched_preview, Toast.LENGTH_SHORT).show();
@@ -51,6 +60,8 @@ public class MainActivity extends ActionBarActivity {
         switchToProductionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fileOperator.deleteFile(STAGING_FILE);
+                fileOperator.deleteFile(PREVIEW_FILE);
                 fileOperator.switchHost("productionHosts");
                 hostContentView.setText(fileOperator.getCurrentHostContent());
                 Toast.makeText(getApplicationContext(), R.string.toast_switched_production, Toast.LENGTH_SHORT).show();
@@ -60,10 +71,31 @@ public class MainActivity extends ActionBarActivity {
         switchToStagingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), R.string.toast_todo, Toast.LENGTH_SHORT).show();
+                displayAlert();
             }
         });
     }
+
+    private void displayAlert()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("请先注销小米账号").setCancelable(
+                false).setPositiveButton("已注销",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        fileOperator.createFile(STAGING_FILE);
+                        fileOperator.createFile(PREVIEW_FILE);
+                        Toast.makeText(getApplicationContext(),"已切换到Staging环境", Toast.LENGTH_SHORT).show();
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                return;
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
