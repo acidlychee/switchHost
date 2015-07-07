@@ -58,7 +58,8 @@ public class FileOperator {
             process = Runtime.getRuntime().exec("su");
             process.getOutputStream().write(cmd2.getBytes());
             process.getOutputStream().write(cmd.getBytes());
-
+            process.getOutputStream().write("exit\n".getBytes());
+            process.waitFor();
         } catch (Exception e) {
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();

@@ -4,10 +4,10 @@
     <string name="text_current_hosts">当前hosts文件内容</string>
     <string name="toast_cant_get_root">未获得root权限，无法切换host</string>
     <string name="button_switch_to_preview">预上线</string>
-    <string name="toast_switched_preview">已切换到预上线环境</string>
+    <string name="toast_switched_preview">已切换至预上线环境</string>
     <string name="button_switch_to_production">生产</string>
-    <string name="toast_switched_production">已切换生产环境</string>
-    <string name="button_custom">自定义</string>
-    <string name="toast_todo">TODO</string>
-    <string name="text_buttom">MIFI-SH QA</string>
+    <string name="toast_switched_production">已切换至生产环境</string>
+    <string name="button_switch_to_staging">Staging</string>
+    <string name="toast_switched_strging">已切换至Staging环境</string>
+    <string name="text_buttom">"@MIFI-SH QA"</string>
 </resources>

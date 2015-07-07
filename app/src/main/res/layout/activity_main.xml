@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:background="@drawable/button_preview"
             android:text="@string/button_switch_to_preview"
-            android:textColor="@color/white"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
 
@@ -35,11 +35,11 @@
             android:layout_weight="1"
             android:background="@drawable/button_production"
             android:text="@string/button_switch_to_production"
-            android:textColor="@color/white"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/custom"
+            android:id="@+id/switchToStaging"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_marginBottom="30dp"
@@ -47,9 +47,9 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="30dp"
             android:layout_weight="1"
-            android:background="@drawable/button_custom"
-            android:text="@string/button_custom"
-            android:textColor="@color/white"
+            android:background="@drawable/button_staging"
+            android:text="@string/button_switch_to_staging"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -58,10 +58,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#f1efed"
-        android:paddingBottom="8dp"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:paddingTop="8dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
         android:text="@string/text_current_hosts"
         android:textColor="#606060"
         android:textSize="20sp"
@@ -75,11 +75,14 @@
     <TextView
         android:id="@+id/currentHostText"
         android:layout_width="fill_parent"
-        android:layout_height="350dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="#ffffffff"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
+        android:scrollbars="vertical"
         android:textColor="@drawable/textselector"
         android:textSize="15sp" />
 
@@ -88,20 +91,17 @@
         android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
 
     <TextView
         android:id="@+id/right"
         android:layout_width="fill_parent"
         android:layout_height="20dp"
-        android:layout_marginBottom="80dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="0"
         android:background="#f1efed"
         android:gravity="center"
         android:text="@string/text_buttom"
         android:textAllCaps="true"
-        android:textColor="#606060"
+        android:textColor="#CCCCCC"
         android:textSize="15sp" />
 </LinearLayout>

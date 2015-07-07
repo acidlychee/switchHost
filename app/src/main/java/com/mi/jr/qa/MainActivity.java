@@ -2,6 +2,7 @@ package com.mi.jr.qa;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,8 +26,10 @@ public class MainActivity extends ActionBarActivity {
         fileOperator = new FileOperator(getApplicationContext());
         Button switchToPreviewButton = (Button) findViewById(R.id.switchToPreview);
         Button switchToProductionButton = (Button) findViewById(R.id.switchToProduction);
-        Button customizeButton = (Button) findViewById(R.id.custom);
+        Button switchToStagingButton = (Button) findViewById(R.id.switchToStaging);
+
         final TextView hostContentView = (TextView) findViewById(R.id.currentHostText);
+        hostContentView.setMovementMethod(ScrollingMovementMethod.getInstance());
 
         if (!fileOperator.isRoot()) {
             switchToPreviewButton.setEnabled(false);
@@ -54,7 +57,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        customizeButton.setOnClickListener(new View.OnClickListener() {
+        switchToStagingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), R.string.toast_todo, Toast.LENGTH_SHORT).show();
@@ -87,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        TextView hostContentView = (TextView) findViewById(R.id.readCurrentHostText);
+        TextView hostContentView = (TextView) findViewById(R.id.currentHostText);
         hostContentView.setText(fileOperator.getCurrentHostContent());
     }
 }
