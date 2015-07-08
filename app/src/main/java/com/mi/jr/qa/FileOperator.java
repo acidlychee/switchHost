@@ -19,11 +19,6 @@ public class FileOperator {
     private Context context;
     private Process process;
 
-    final String DATA_SYSTEM="/data/system";
-    final String STAGING_FILE=DATA_SYSTEM+"/server_staging";
-    final String PREVIEW_FILE=DATA_SYSTEM+"/xiaomi_account_preview";
-
-
     public FileOperator(Context context) {
         this.context = context;
     }
