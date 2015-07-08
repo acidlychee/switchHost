@@ -8,14 +8,14 @@
     <string name="toast_switched_preview">已切换至预上线环境</string>
     <string name="button_switch_to_production">生产</string>
     <string name="toast_switched_production">已切换至生产环境</string>
-    <string name="button_switch_to_staging">Staging</string>
-    <string name="toast_switched_staging">已切换至Staging环境</string>
+    <string name="button_switch_to_staging">测试</string>
+    <string name="toast_switched_staging">已切换至测试环境</string>
     <string name="text_logout_your_miid">已在“我的小米”中注销小米ID？</string>
     <string name="button_has_logout">已注销</string>
     <string name="button_hasnot_logout">取消</string>
     <string name="text_buttom">"@MIFI-SH QA"</string>
     <string name="text_about">"\r\n 小米金融上海团队 \r\n @黎明 @鸡蛋bin \r\n mifi-sh@xiaomi.com \r\n"</string>
-    <string name="title_activity_custom">自定义Host文件内容</string>
+    <string name="title_activity_custom">自定义Hosts文件内容</string>
     <string name="button_save">保存并应用</string>
     <string name="button_cancel">取消</string>
     <string name="toast_switched_custom">已切换至自定义环境</string>
