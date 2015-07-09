@@ -38,8 +38,6 @@ public class CustomActivity extends Activity {
             @Override
             public void onClick(View v) {
                 addCustomHost(customEdit);
-                fileOperator.deleteFile(STAGING_FILE);
-                fileOperator.deleteFile(PREVIEW_FILE);
                 fileOperator.switchHost("customHosts");
                 Toast.makeText(getApplicationContext(), R.string.toast_switched_custom, Toast.LENGTH_SHORT).show();
                 finish();
