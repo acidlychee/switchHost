@@ -25,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
     final String DATA_SYSTEM = "/data/system";
     final String STAGING_FILE = DATA_SYSTEM + "/server_staging";
     final String PREVIEW_FILE = DATA_SYSTEM + "/xiaomi_account_preview";
+    final String OAUTH_FILE = DATA_SYSTEM + "/oauth_staging_preview";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 fileOperator.deleteFile(STAGING_FILE);
                 fileOperator.deleteFile(PREVIEW_FILE);
+                fileOperator.deleteFile(OAUTH_FILE);
                 fileOperator.switchHost("previewHosts");
                 hostContentView.setText(fileOperator.getCurrentHostContent());
                 Toast.makeText(getApplicationContext(), R.string.toast_switched_preview, Toast.LENGTH_SHORT).show();
@@ -64,6 +66,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 fileOperator.deleteFile(STAGING_FILE);
                 fileOperator.deleteFile(PREVIEW_FILE);
+                fileOperator.deleteFile(OAUTH_FILE);
                 fileOperator.switchHost("productionHosts");
                 hostContentView.setText(fileOperator.getCurrentHostContent());
                 Toast.makeText(getApplicationContext(), R.string.toast_switched_production, Toast.LENGTH_SHORT).show();
@@ -86,6 +89,7 @@ public class MainActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         fileOperator.createFile(STAGING_FILE);
                         fileOperator.createFile(PREVIEW_FILE);
+                        fileOperator.createFile(OAUTH_FILE);
                         Toast.makeText(getApplicationContext(), R.string.toast_switched_staging, Toast.LENGTH_SHORT).show();
                     }
                 }).setNegativeButton(R.string.button_hasnot_logout, new DialogInterface.OnClickListener() {
